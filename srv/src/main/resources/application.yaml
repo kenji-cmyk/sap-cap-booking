@@ -1,0 +1,27 @@
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    hikari:
+      max-lifetime: 0
+      maximum-pool-size: 1
+    url: jdbc:sqlite:file::memory:?cache=shared
+  sql:
+    init:
+      mode: always
+      platform: sqlite
+
+cds :  
+  security:
+    mock : 
+      user:
+      - name: trainee
+        password: trainee
+        roles: [authenticated-user]
+      - name: booking-admin
+        password: admin-dev-only
+        roles: [BookingAdmin, authenticated-user]
